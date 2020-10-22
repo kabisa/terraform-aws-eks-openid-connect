@@ -4,7 +4,7 @@ data "external" "thumbprint" {
 
 resource "aws_iam_openid_connect_provider" "openid_connect_provider" {
   lifecycle {
-    ignore_changes = [data.external.thumbprint.result.thumbprint]
+    ignore_changes = [thumbprint_list]
   }
   client_id_list  = ["sts.amazonaws.com"]
   thumbprint_list = [data.external.thumbprint.result.thumbprint]
